@@ -21,7 +21,8 @@ class gunshot : MonoBehaviour {
             Gunshot.Play("adsgunshot");
             ammo--;
         }
-        if (Input.GetKeyDown(KeyCode.R) && ammo == 0) {
+        if (Input.GetKeyDown(KeyCode.R) && !Gunshot.IsPlaying("Gunshot") && !Gunshot.IsPlaying("adsgunshot")  && ammo < 15) {
+            Gunshot.Play("m9reload");
             ammo = 15;
         } 
     }

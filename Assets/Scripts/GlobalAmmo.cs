@@ -11,11 +11,12 @@ public class GlobalAmmo : MonoBehaviour
     public static int LoadedAmmo;
     public int InternalLoaded;
     public GameObject LoadedDisplay;
+    public int MaxAmmo = 15;
     void Update()
     {
         InternalAmmo = CurrentAmmo;
         InternalLoaded = LoadedAmmo;
         AmmoDisplay.GetComponent<Text>().text = "" + InternalAmmo;
-        LoadedDisplay.GetComponent<Text>().text = "" + LoadedAmmo;
+        LoadedDisplay.GetComponent<Text>().text = "" + LoadedAmmo + " / " + MaxAmmo;
     }
 }

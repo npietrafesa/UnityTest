@@ -14,8 +14,10 @@ public class aim : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (Input.GetMouseButton(1)) {
+           // Console.WriteLine("A");
             transform.localPosition = Vector3.Slerp(transform.localPosition, aimDownSights, aimspeed * Time.deltaTime);
         } else {
+          //  Console.WriteLine("B");
             transform.localPosition = Vector3.Slerp(transform.localPosition, hipFire, aimspeed * Time.deltaTime);
         }
     }

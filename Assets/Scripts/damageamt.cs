@@ -7,7 +7,7 @@ public class damageamt : MonoBehaviour {
     public float targetDistance;
     public float allowedRange = 15f;
     void Update() {
-        if (Input.GetButtonDown("Fire1")) {
+        if (Input.GetButtonDown("Fire1") && GlobalAmmo.LoadedAmmo != 0) {
             RaycastHit Shot;
             if (Physics.Raycast (transform.position, transform.TransformDirection(Vector3.forward), out Shot)) {
                 targetDistance = Shot.distance;

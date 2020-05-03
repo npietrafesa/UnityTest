@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-class gunshot : MonoBehaviour {
+public class gunshot : MonoBehaviour {
     public AudioSource gunfire;
     public Animation Gunshot;
-    int ammo = 15;
+    //int ammo = 15;
     void Start() {
         gunfire = GetComponent<AudioSource>();
         Gunshot = GetComponent<Animation>();
@@ -13,20 +13,24 @@ class gunshot : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !Input.GetMouseButton(1) && !Gunshot.IsPlaying("Gunshot") && ammo != 0) {
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !Input.GetMouseButton(1) && !Gunshot.IsPlaying("Gunshot") && GlobalAmmo.LoadedAmmo != 0) {
             gunfire.Play();
             Gunshot.Play("Gunshot");
-            ammo--;
-            GlobalAmmo.CurrentAmmo = ammo;
-        } else if (Input.GetKeyDown(KeyCode.Mouse0) && Input.GetMouseButton(1) && !Gunshot.IsPlaying("adsgunshot") && ammo != 0) {
+            //ammo--;
+            //GlobalAmmo.CurrentAmmo = ammo;
+            GlobalAmmo.LoadedAmmo -= 1;
+        } else if (Input.GetKeyDown(KeyCode.Mouse0) && Input.GetMouseButton(1) && !Gunshot.IsPlaying("adsgunshot") && GlobalAmmo.LoadedAmmo != 0) {
             gunfire.Play();
             Gunshot.Play("adsgunshot");
-            ammo--;
-            GlobalAmmo.CurrentAmmo = ammo;
+            //ammo--;
+            //GlobalAmmo.CurrentAmmo = ammo;
+            GlobalAmmo.LoadedAmmo -= 1;
         }
-        if (Input.GetKeyDown(KeyCode.R) && ammo == 0) {
-            ammo = 15;
-            GlobalAmmo.CurrentAmmo = ammo;
-        } 
+      /*  if (Input.GetKeyDown(KeyCode.R) && !Gunshot.IsPlaying("Gunshot") && !Gunshot.IsPlaying("adsgunshot")  && GlobalAmmo.LoadedAmmo < 15) {
+            Gunshot.Play("m9reload");
+            //ammo = 15;
+            //GlobalAmmo.CurrentAmmo = ammo;
+            GlobalAmmo.LoadedAmmo = 15;
+        } */
     }
 }
